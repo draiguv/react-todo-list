@@ -1,2 +1,6 @@
 # react-todo-list
-React Training
+
+React training on:
+
+- Familiarization to React
+- Managing a Component Tree
