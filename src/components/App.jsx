@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export default function App() {
-  const [item, setItem] = useState();
+  const [item, setItem] = useState('');
   const [items, setItems] = useState([]);
 
   const handleInput = (e) => {
@@ -11,6 +11,7 @@ export default function App() {
 
   const populateList = () => {
     setItems((prevValue) => [...prevValue, item]);
+    setItem('');
   };
 
   return (
@@ -21,8 +22,8 @@ export default function App() {
       <div className='form'>
         <input
           type='text'
+          value={item}
           onChange={handleInput}
-          // value={item}
           placeholder='Enter item'
         />
         <button onClick={populateList}>
@@ -31,9 +32,9 @@ export default function App() {
       </div>
       <div>
         <ul>
-          {items.map((data, i) => {
-            return <li key={i}>{data}</li>;
-          })}
+          {items.map((data, i) => (
+            <li key={i}>{data}</li>
+          ))}
         </ul>
       </div>
     </div>
