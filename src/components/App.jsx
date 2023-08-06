@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 
 export default function App() {
-  const [item, setItem] = useState('');
+  const [item, setItem] = useState();
+  const [items, setItems] = useState([]);
 
   const handleInput = (e) => {
-    console.log(e.target.value);
-    setItem(e.target.value);
+    const value = e.target.value;
+    setItem(value);
+  };
+
+  const populateList = () => {
+    setItems((prevValue) => [...prevValue, item]);
   };
 
   return (
@@ -17,16 +22,18 @@ export default function App() {
         <input
           type='text'
           onChange={handleInput}
-          value={item}
+          // value={item}
           placeholder='Enter item'
         />
-        <button>
+        <button onClick={populateList}>
           <span>Add</span>
         </button>
       </div>
       <div>
         <ul>
-          <li>A Item</li>
+          {items.map((data, i) => {
+            return <li key={i}>{data}</li>;
+          })}
         </ul>
       </div>
     </div>
